@@ -1,6 +1,6 @@
 import { Grid, GridItem, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
-import MoviesGrid from "./components/MoviesGrid";
+import AnimeGrid from "./components/AnimeeGrid";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <MoviesGrid/>
+        <AnimeGrid/>
       </GridItem>
     </Grid>
   );
