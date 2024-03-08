@@ -3,8 +3,8 @@ import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
 export interface Studio {
-    mal_id: number;
-    name: string;
+  mal_id: number;
+  name: string;
 }
 
 export interface Anime {
@@ -15,7 +15,8 @@ export interface Anime {
       image_url: string;
     };
   };
-  studios: Studio[]
+  studios: Studio[];
+  score: number;
 }
 
 interface FetchAnimeResponse {
