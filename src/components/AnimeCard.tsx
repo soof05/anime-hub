@@ -7,7 +7,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { Anime } from "../hooks/useGames";
+import { Anime } from "../hooks/useAnime";
 import StudioList from "./StudioList";
 import ScoreBadge from "./ScoreBadge";
 
