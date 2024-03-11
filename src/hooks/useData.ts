@@ -29,7 +29,6 @@ const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?:
     return () => controller.abort();
   }, deps ? [...deps] : []);
 
-  console.log('here', data)
 
   return { data, error, isLoading };
 };

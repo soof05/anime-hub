@@ -4,6 +4,7 @@ import AnimeGrid from "./components/AnimeGrid";
 import GenresList from "./components/GenresList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
+import ProducerSelector from "./components/ProducerSelector";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
@@ -28,6 +29,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
+        <ProducerSelector/>
         <AnimeGrid selectedGenre={selectedGenre}/>
       </GridItem>
     </Grid>
