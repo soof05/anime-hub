@@ -5,9 +5,11 @@ import GenresList from "./components/GenresList";
 import { useState } from "react";
 import { Genre } from "./hooks/useGenres";
 import ProducerSelector from "./components/ProducerSelector";
+import { Producer } from "./hooks/useProducers";
 
 function App() {
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedProducer, setSelectedProducer] = useState<Producer | null>(null);
 
   return (
     <Grid
@@ -29,8 +31,8 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <ProducerSelector/>
-        <AnimeGrid selectedGenre={selectedGenre}/>
+        <ProducerSelector onSelectProducer={(producer) => setSelectedProducer(producer)}/>
+        <AnimeGrid  selectedProducer={selectedProducer} selectedGenre={selectedGenre}/>
       </GridItem>
     </Grid>
   );

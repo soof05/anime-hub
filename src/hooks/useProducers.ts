@@ -1,6 +1,6 @@
 import useData from "./useData";
 
-interface Producer {
+export interface Producer {
   mal_id: number;
   titles: [
     {

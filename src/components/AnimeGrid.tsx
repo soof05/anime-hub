@@ -4,14 +4,16 @@ import AnimeCardSkeleton from "./AnimeCardSkeleton";
 import AnimeCardContainer from "./AnimeCardContainer";
 import useAnime from "../hooks/useAnime";
 import { Genre } from "../hooks/useGenres";
+import { Producer } from "../hooks/useProducers";
 
 
 interface Props {
   selectedGenre: Genre | null
+  selectedProducer: Producer | null;
 }
 
-const AnimeGrid = ({selectedGenre}: Props) => {
-  const { data, error, isLoading } = useAnime(selectedGenre);
+const AnimeGrid = ({selectedGenre, selectedProducer}: Props) => {
+  const { data, error, isLoading } = useAnime(selectedGenre, selectedProducer);
   const skeletons = [1,2,3,4,5,6,7,8];
   console.log(data);
 

@@ -1,8 +1,12 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BiChevronDown } from "react-icons/bi";
-import useProducers from "../hooks/useProducers";
+import useProducers, { Producer } from "../hooks/useProducers";
 
-const ProducerSelector = () => {
+interface Props {
+  onSelectProducer: (producer : Producer | null) => void;
+}
+
+const ProducerSelector = ({onSelectProducer}: Props) => {
   const { data, error } = useProducers();
 
   if (error) return null;
@@ -14,7 +18,7 @@ const ProducerSelector = () => {
       </MenuButton>
       <MenuList>
         {data.map((producer) => (
-          <MenuItem key={producer.mal_id}>{producer.titles[0].title}</MenuItem>
+          <MenuItem onClick={() => onSelectProducer(producer)} key={producer.mal_id}>{producer.titles[0].title}</MenuItem>
         ))}
       </MenuList>
     </Menu>
