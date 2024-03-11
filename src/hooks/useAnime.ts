@@ -1,5 +1,5 @@
 import useData from "./useData";
-
+import { Genre } from "./useGenres";
 export interface Studio {
   mal_id: number;
   name: string;
@@ -20,7 +20,9 @@ export interface Anime {
   score: number;
 }
 
-
-const useAnime = () => useData<Anime>("/top/anime")
+const useAnime = (selectedGenere: Genre | null) =>
+  useData<Anime>("/anime", { params: { gneres: selectedGenere?.mal_id } }, [
+    selectedGenere?.mal_id,
+  ]);
 
 export default useAnime;

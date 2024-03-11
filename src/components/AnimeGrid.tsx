@@ -3,10 +3,15 @@ import AnimeCard from "./AnimeCard";
 import AnimeCardSkeleton from "./AnimeCardSkeleton";
 import AnimeCardContainer from "./AnimeCardContainer";
 import useAnime from "../hooks/useAnime";
+import { Genre } from "../hooks/useGenres";
 
 
-const AnimeGrid = () => {
-  const { data, error, isLoading } = useAnime();
+interface Props {
+  selectedGenre: Genre | null
+}
+
+const AnimeGrid = ({selectedGenre}: Props) => {
+  const { data, error, isLoading } = useAnime(selectedGenre);
   const skeletons = [1,2,3,4,5,6,7,8];
   console.log(data);
 
@@ -20,13 +25,13 @@ const AnimeGrid = () => {
         spacing={4}
       >
          {isLoading && skeletons.map((skeleton) => (
-         <AnimeCardContainer >
-           <AnimeCardSkeleton key={skeleton} />
+         <AnimeCardContainer key={skeleton}>
+           <AnimeCardSkeleton />
          </AnimeCardContainer>
          ))}
         {data.map((anime) => (
-          <AnimeCardContainer>
-            <AnimeCard key={anime.mal_id} anime={anime} />
+          <AnimeCardContainer key={anime.mal_id}>
+            <AnimeCard anime={anime} />
           </AnimeCardContainer>
         ))}
       </SimpleGrid>
