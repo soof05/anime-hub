@@ -4,9 +4,10 @@ import useProducers, { Producer } from "../hooks/useProducers";
 
 interface Props {
   onSelectProducer: (producer : Producer | null) => void;
+  selectedProducer: Producer | null;
 }
 
-const ProducerSelector = ({onSelectProducer}: Props) => {
+const ProducerSelector = ({onSelectProducer, selectedProducer}: Props) => {
   const { data, error } = useProducers();
 
   if (error) return null;
@@ -14,7 +15,7 @@ const ProducerSelector = ({onSelectProducer}: Props) => {
   return (
     <Menu>
       <MenuButton as={Button} rightIcon={<BiChevronDown />}>
-        Producers
+        {selectedProducer ? selectedProducer.titles[0].title : 'Producers'}
       </MenuButton>
       <MenuList>
         {data.map((producer) => (

@@ -31,7 +31,7 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <ProducerSelector onSelectProducer={(producer) => setSelectedProducer(producer)}/>
+        <ProducerSelector selectedProducer={selectedProducer} onSelectProducer={(producer) => setSelectedProducer(producer)}/>
         <AnimeGrid  selectedProducer={selectedProducer} selectedGenre={selectedGenre}/>
       </GridItem>
     </Grid>
