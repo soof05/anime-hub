@@ -10,7 +10,7 @@ const StudioList = ({ studios }: Props) => {
     <>
       <HStack marginY="10px">
         {studios.map((studio) => (
-          <Text color="#A0AEC0">Studio: {studio.name}</Text>
+          <Text key={studio.mal_id} color="#A0AEC0">Studio: {studio.name}</Text>
         ))}
       </HStack>
     </>

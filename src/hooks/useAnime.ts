@@ -27,7 +27,8 @@ const useAnime = (animeQuery: AnimeQuery) =>
       params: {
         gneres: animeQuery.genre?.mal_id,
         producers: animeQuery.producer?.mal_id,
-        order_by: animeQuery.Sortquery
+        order_by: animeQuery.Sortquery,
+        q: animeQuery.searchText,
       },
     },
     [animeQuery]

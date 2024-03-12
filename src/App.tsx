@@ -7,11 +7,13 @@ import { Genre } from "./hooks/useGenres";
 import ProducerSelector from "./components/ProducerSelector";
 import { Producer } from "./hooks/useProducers";
 import SortSelector from "./components/SortSelector";
+import './index.css'
 
 export interface AnimeQuery {
   genre: Genre | null;
   producer: Producer | null;
   Sortquery: string | null;
+  searchText: string;
 }
 
 function App() {
@@ -29,7 +31,7 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar />
+        <NavBar onSearch={(searchText) => setAnimeQuery({...animeQuery, searchText})}/>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
