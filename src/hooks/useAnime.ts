@@ -1,6 +1,5 @@
+import { AnimeQuery } from "../App";
 import useData from "./useData";
-import { Genre } from "./useGenres";
-import { Producer } from "./useProducers";
 export interface Studio {
   mal_id: number;
   name: string;
@@ -21,19 +20,16 @@ export interface Anime {
   score: number;
 }
 
-const useAnime = (
-  selectedGenere: Genre | null,
-  selectedProducer: Producer | null
-) =>
+const useAnime = (animeQuery: AnimeQuery) =>
   useData<Anime>(
     "/anime",
     {
       params: {
-        gneres: selectedGenere?.mal_id,
-        producers: selectedProducer?.mal_id,
+        gneres: animeQuery.genre?.mal_id,
+        producers: animeQuery.producer?.mal_id,
       },
     },
-    [selectedGenere?.mal_id, selectedProducer?.mal_id]
+    [animeQuery]
   );
 
 export default useAnime;

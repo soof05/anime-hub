@@ -18,7 +18,7 @@ interface Props {
 const AnimeCard = ({ anime }: Props) => {
   return (
     <Card>
-      <Image height="350px" src={anime.images.jpg.image_url} />
+      <Image src={anime.images.jpg.image_url} />
       <CardBody>
         <Heading fontSize="2xl">{anime.title}</Heading>
         <HStack justifyContent="space-between">

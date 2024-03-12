@@ -7,9 +7,13 @@ import { Genre } from "./hooks/useGenres";
 import ProducerSelector from "./components/ProducerSelector";
 import { Producer } from "./hooks/useProducers";
 
+export interface AnimeQuery {
+  genre: Genre | null;
+  producer: Producer | null;
+}
+
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedProducer, setSelectedProducer] = useState<Producer | null>(null);
+  const [animeQuery, setAnimeQuery] = useState<AnimeQuery>({} as AnimeQuery);
 
   return (
     <Grid
@@ -27,12 +31,22 @@ function App() {
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
-          <GenresList selectedGenre={selectedGenre} onSelectGenre={(genre) => setSelectedGenre(genre)} />
+          <GenresList
+            selectedGenre={animeQuery.genre}
+            onSelectGenre={(genre) => setAnimeQuery({ ...animeQuery, genre })}
+          />
         </GridItem>
       </Show>
       <GridItem area="main">
-        <ProducerSelector selectedProducer={selectedProducer} onSelectProducer={(producer) => setSelectedProducer(producer)}/>
-        <AnimeGrid  selectedProducer={selectedProducer} selectedGenre={selectedGenre}/>
+        <ProducerSelector
+          selectedProducer={animeQuery.producer}
+          onSelectProducer={(producer) =>
+            setAnimeQuery({ ...animeQuery, producer })
+          }
+        />
+        <AnimeGrid
+          animeQuery={animeQuery}
+        />
       </GridItem>
     </Grid>
   );
