@@ -1,4 +1,4 @@
-import { Grid, GridItem, HStack, Show } from "@chakra-ui/react";
+import { Box, Grid, GridItem, HStack, Show } from "@chakra-ui/react";
 import NavBar from "./components/NavBar";
 import AnimeGrid from "./components/AnimeGrid";
 import GenresList from "./components/GenresList";
@@ -8,6 +8,7 @@ import ProducerSelector from "./components/ProducerSelector";
 import { Producer } from "./hooks/useProducers";
 import SortSelector from "./components/SortSelector";
 import './index.css'
+import AnimeHeading from "./components/AnimeHeading";
 
 export interface AnimeQuery {
   genre: Genre | null;
@@ -31,7 +32,7 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar onSearch={(searchText) => setAnimeQuery({...animeQuery, searchText})}/>
+        <NavBar onSearch={(searchText) => setAnimeQuery({ ...animeQuery, searchText })} />
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
@@ -42,15 +43,18 @@ function App() {
         </GridItem>
       </Show>
       <GridItem area="main">
-        <HStack spacing={5} paddingLeft={3} marginBottom={6}>
-          <ProducerSelector
-            selectedProducer={animeQuery.producer}
-            onSelectProducer={(producer) =>
-              setAnimeQuery({ ...animeQuery, producer })
-            }
-          />
-          <SortSelector selectedQuery={animeQuery.Sortquery} onSelectQuery={(Sortquery) => setAnimeQuery({...animeQuery, Sortquery})}/>
-        </HStack>
+        <Box paddingLeft={3}>
+          <AnimeHeading title={animeQuery.producer?.titles[0].title} />
+          <HStack spacing={5} marginBottom={6}>
+            <ProducerSelector
+              selectedProducer={animeQuery.producer}
+              onSelectProducer={(producer) =>
+                setAnimeQuery({ ...animeQuery, producer })
+              }
+            />
+            <SortSelector selectedQuery={animeQuery.Sortquery} onSelectQuery={(Sortquery) => setAnimeQuery({ ...animeQuery, Sortquery })} />
+          </HStack>
+        </Box>
         <AnimeGrid animeQuery={animeQuery} />
       </GridItem>
     </Grid>

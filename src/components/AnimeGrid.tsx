@@ -30,11 +30,11 @@ const AnimeGrid = ({ animeQuery }: Props) => {
             </AnimeCardContainer>
           ))}
         {data.map((anime) =>
-          anime.score  ? (
-            <AnimeCardContainer key={anime.mal_id}>
-              <AnimeCard anime={anime} />
-            </AnimeCardContainer>
-          ) : null
+        (
+          <AnimeCardContainer key={anime.mal_id}>
+            <AnimeCard anime={anime} />
+          </AnimeCardContainer>
+        )
         )}
       </SimpleGrid>
     </>
