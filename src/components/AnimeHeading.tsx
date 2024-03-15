@@ -10,7 +10,7 @@ const AnimeHeading = ({ title }: Props) => {
       <Heading marginBottom={5} as='h1'>{title + ' works'}</Heading>
     )
   return (
-    <Heading marginBottom={5} as='h1'>Anime</Heading>
+    <Heading marginBottom={5} as='h1'>Animes</Heading>
   )
 }
 
