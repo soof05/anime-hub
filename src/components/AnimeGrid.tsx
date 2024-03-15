@@ -14,30 +14,29 @@ const AnimeGrid = ({ animeQuery }: Props) => {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   console.log(data);
 
-  return (
-    <>
-      {error && <Text>{error}</Text>}
+  if (error) return <Text>{error}</Text>
 
-      <SimpleGrid
-        columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
-        padding="13px"
-        spacing={4}
-      >
-        {isLoading &&
-          skeletons.map((skeleton) => (
-            <AnimeCardContainer key={skeleton}>
-              <AnimeCardSkeleton />
-            </AnimeCardContainer>
-          ))}
-        {data.map((anime) =>
-        (
-          <AnimeCardContainer key={anime.mal_id}>
-            <AnimeCard anime={anime} />
+  return (
+
+    <SimpleGrid
+      columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
+      padding="13px"
+      spacing={4}
+    >
+      {isLoading &&
+        skeletons.map((skeleton) => (
+          <AnimeCardContainer key={skeleton}>
+            <AnimeCardSkeleton />
           </AnimeCardContainer>
-        )
-        )}
-      </SimpleGrid>
-    </>
+        ))}
+      {data.map((anime) =>
+      (
+        <AnimeCardContainer key={anime.mal_id}>
+          <AnimeCard anime={anime} />
+        </AnimeCardContainer>
+      )
+      )}
+    </SimpleGrid>
   );
 };
 
