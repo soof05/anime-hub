@@ -14,7 +14,7 @@ const AnimeGrid = ({ animeQuery }: Props) => {
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
   console.log(data);
 
-  if (error) return <Text>{error}</Text>
+  if (error) return <Text>{error.message}</Text>
 
   return (
 
@@ -29,7 +29,7 @@ const AnimeGrid = ({ animeQuery }: Props) => {
             <AnimeCardSkeleton />
           </AnimeCardContainer>
         ))}
-      {data.map((anime) =>
+      {data?.data.map((anime) =>
       (
         <AnimeCardContainer key={anime.mal_id}>
           <AnimeCard anime={anime} />

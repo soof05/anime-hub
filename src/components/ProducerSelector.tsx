@@ -18,7 +18,7 @@ const ProducerSelector = ({onSelectProducer, selectedProducer}: Props) => {
         {selectedProducer ? selectedProducer.titles[0].title : 'Producers'}
       </MenuButton>
       <MenuList>
-        {data.map((producer) => (
+        {data?.data.map((producer) => (
           <MenuItem onClick={() => onSelectProducer(producer)} key={producer.mal_id}>{producer.titles[0].title}</MenuItem>
         ))}
       </MenuList>

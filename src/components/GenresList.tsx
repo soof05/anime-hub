@@ -18,7 +18,7 @@ const GenresList = ({ onSelectGenre, selectedGenre }: Props) => {
     <List>
       {isLoading &&
         skeletons.map((skeleton) => <GneresSkeleton key={skeleton} />)}
-      {data.map((genre) => (
+      {data?.data.map((genre) => (
         <ListItem key={genre.mal_id} paddingY="4px">
           <Button fontWeight={genre.mal_id === selectedGenre?.mal_id ? 'bold' : 'normal'} onClick={() => onSelectGenre(genre)} variant='link'>{genre.name}</Button>
         </ListItem>
