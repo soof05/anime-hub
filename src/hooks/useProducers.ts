@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import apiClient from "../services/api-client";
-import { FetchResponse } from "../services/api-client";
+import APIClient from "../services/api-client";
+
+
 
 export interface Producer {
   mal_id: number;
@@ -12,15 +13,13 @@ export interface Producer {
   ];
 }
 
+const apiClient = new APIClient<Producer>('/producers');
+
 const useProducers = () => {
-  const fetchProducers = () =>
-    apiClient
-      .get<FetchResponse<Producer>>("/producers")
-      .then((res) => res.data);
 
   return useQuery({
     queryKey: ['producers'],
-    queryFn: fetchProducers,
+    queryFn: () => apiClient.getAll(),
     staleTime: 24 * 60 * 60 * 1000, // 24h
   })
 };
