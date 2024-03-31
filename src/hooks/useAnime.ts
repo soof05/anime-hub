@@ -30,8 +30,8 @@ const useAnime = (animeQuery: AnimeQuery) => {
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
-          gneres: animeQuery.genre?.mal_id,
-          producers: animeQuery.producer?.mal_id,
+          gneres: animeQuery.genreId,
+          producers: animeQuery.producerId,
           order_by: animeQuery.Sortquery,
           q: animeQuery.searchText,
           page: pageParam,

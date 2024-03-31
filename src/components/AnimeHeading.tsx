@@ -1,13 +1,17 @@
 import { Heading } from "@chakra-ui/react"
+import useProducers from "../hooks/useProducers";
 
 interface Props {
-  title: string | undefined;
+  producerId: number | null;
 }
 
-const AnimeHeading = ({ title }: Props) => {
-  if (title)
+const AnimeHeading = ({ producerId }: Props) => {
+
+  const producers = useProducers();
+  const producer = producers.data?.data.find(p => p.mal_id === producerId)
+  if (producerId)
     return (
-      <Heading marginBottom={5} as='h1'>{title + ' works'}</Heading>
+      <Heading marginBottom={5} as='h1'>{producer?.titles[0] + ' works'}</Heading>
     )
   return (
     <Heading marginBottom={5} as='h1'>Animes</Heading>

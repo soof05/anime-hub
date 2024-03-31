@@ -3,16 +3,14 @@ import NavBar from "./components/NavBar";
 import AnimeGrid from "./components/AnimeGrid";
 import GenresList from "./components/GenresList";
 import { useState } from "react";
-import { Genre } from "./hooks/useGenres";
 import ProducerSelector from "./components/ProducerSelector";
-import { Producer } from "./hooks/useProducers";
 import SortSelector from "./components/SortSelector";
 import './index.css'
 import AnimeHeading from "./components/AnimeHeading";
 
 export interface AnimeQuery {
-  genre: Genre | null;
-  producer: Producer | null;
+  genreId: number | null;
+  producerId: number | null;
   Sortquery: string | null;
   searchText: string;
 }
@@ -37,19 +35,19 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenresList
-            selectedGenre={animeQuery.genre}
-            onSelectGenre={(genre) => setAnimeQuery({ ...animeQuery, genre })}
+            selectedGenreId={animeQuery.genreId}
+            onSelectGenre={(genreId) => setAnimeQuery({ ...animeQuery, genreId })}
           />
         </GridItem>
       </Show>
       <GridItem area="main">
         <Box paddingLeft={3}>
-          <AnimeHeading title={animeQuery.producer?.titles[0].title} />
+          <AnimeHeading producerId={animeQuery.producerId} />
           <HStack spacing={5} marginBottom={6}>
             <ProducerSelector
-              selectedProducer={animeQuery.producer}
-              onSelectProducer={(producer) =>
-                setAnimeQuery({ ...animeQuery, producer })
+              selectedProducerId={animeQuery.producerId}
+              onSelectProducer={(producerId) =>
+                setAnimeQuery({ ...animeQuery, producerId })
               }
             />
             <SortSelector selectedQuery={animeQuery.Sortquery} onSelectQuery={(Sortquery) => setAnimeQuery({ ...animeQuery, Sortquery })} />
