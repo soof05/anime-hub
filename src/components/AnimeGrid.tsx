@@ -1,10 +1,11 @@
-import { Box, Button, SimpleGrid, Text } from "@chakra-ui/react";
-import AnimeCard from "./AnimeCard";
-import AnimeCardSkeleton from "./AnimeCardSkeleton";
-import AnimeCardContainer from "./AnimeCardContainer";
-import useAnime from "../hooks/useAnime";
-import { AnimeQuery } from "../App";
+import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import React from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import { AnimeQuery } from "../App";
+import useAnime from "../hooks/useAnime";
+import AnimeCard from "./AnimeCard";
+import AnimeCardContainer from "./AnimeCardContainer";
+import AnimeCardSkeleton from "./AnimeCardSkeleton";
 
 interface Props {
   animeQuery: AnimeQuery;
@@ -15,7 +16,6 @@ const AnimeGrid = ({ animeQuery }: Props) => {
     data,
     error,
     isLoading,
-    isFetchingNextPage,
     hasNextPage,
     fetchNextPage,
   } = useAnime(animeQuery);
@@ -24,11 +24,20 @@ const AnimeGrid = ({ animeQuery }: Props) => {
 
   if (error) return <Text>{error.message}</Text>;
 
+  const fetchedAnimesCount =
+    data?.pages.reduce((acc, page) => acc + page.data.length, 0) || 0;
+
   return (
-    <Box padding="13px">
+    <InfiniteScroll
+      dataLength={fetchedAnimesCount}
+      hasMore={hasNextPage}
+      next={() => fetchNextPage()}
+      loader={<Spinner />}
+    >
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
         spacing={4}
+        padding="13px"
       >
         {isLoading &&
           skeletons.map((skeleton) => (
@@ -46,12 +55,7 @@ const AnimeGrid = ({ animeQuery }: Props) => {
           </React.Fragment>
         ))}
       </SimpleGrid>
-      {hasNextPage && (
-        <Button onClick={() => fetchNextPage()} marginY={5}>
-          {isFetchingNextPage ? "Loading..." : "Load More"}
-        </Button>
-      )}
-    </Box>
+    </InfiniteScroll>
   );
 };
 

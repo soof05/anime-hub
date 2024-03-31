@@ -42,6 +42,7 @@ const useAnime = (animeQuery: AnimeQuery) => {
       lastPage.pagination?.has_next_page ? allPages.length + 1 : undefined;
       return allPages.length + 1;
     },
+    staleTime: 24 * 60 * 60 * 1000 //24h
   });
 };
 
