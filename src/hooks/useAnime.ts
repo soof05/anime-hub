@@ -1,7 +1,7 @@
 import { useInfiniteQuery} from "@tanstack/react-query";
 import { AnimeQuery } from "../App";
 import APIClient, { FetchResponse } from "../services/api-client";
-
+import ms from 'ms'
 export interface Studio {
   mal_id: number;
   name: string;
@@ -42,7 +42,7 @@ const useAnime = (animeQuery: AnimeQuery) => {
       lastPage.pagination?.has_next_page ? allPages.length + 1 : undefined;
       return allPages.length + 1;
     },
-    staleTime: 24 * 60 * 60 * 1000 //24h
+    staleTime: ms('24h')
   });
 };
 
