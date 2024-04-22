@@ -1,6 +1,6 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BiChevronDown } from "react-icons/bi";
-import useProducers, { Producer } from "../hooks/useProducers";
+import useProducers from "../hooks/useProducers";
 
 interface Props {
   onSelectProducer: (producerId : number | null) => void;
