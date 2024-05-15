@@ -11,7 +11,7 @@ const AnimeHeading = ({ producerId }: Props) => {
   const producer = producers.data?.data.find(p => p.mal_id === producerId)
   if (producerId)
     return (
-      <Heading marginBottom={5} as='h1'>{producer?.titles[0] + ' works'}</Heading>
+      <Heading marginBottom={5} as='h1'>{producer?.titles[0].title + ' works'}</Heading>
     )
   return (
     <Heading marginBottom={5} as='h1'>Animes</Heading>
