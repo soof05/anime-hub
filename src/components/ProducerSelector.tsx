@@ -1,14 +1,14 @@
 import { Button, Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { BiChevronDown } from "react-icons/bi";
 import useProducers from "../hooks/useProducers";
+import useAnimeQueryStore from "../store";
 
-interface Props {
-  onSelectProducer: (producerId : number | null) => void;
-  selectedProducerId: number | null;
-}
-
-const ProducerSelector = ({onSelectProducer, selectedProducerId}: Props) => {
+const ProducerSelector = () => {
   const { data, error } = useProducers();
+
+  const selectedProducerId = useAnimeQueryStore(s => s.animeQuery.producerId)
+  const setSelectedProducerId = useAnimeQueryStore(s => s.setProducerId);
+
   const producer = data?.data.find(p => p.mal_id === selectedProducerId)
 
   if (error) return null;
@@ -20,7 +20,7 @@ const ProducerSelector = ({onSelectProducer, selectedProducerId}: Props) => {
       </MenuButton>
       <MenuList>
         {data?.data.map((producer) => (
-          <MenuItem onClick={() => onSelectProducer(producer.mal_id)} key={producer.mal_id}>{producer.titles[0].title}</MenuItem>
+          <MenuItem onClick={() => setSelectedProducerId(producer.mal_id)} key={producer.mal_id}>{producer.titles[0].title}</MenuItem>
         ))}
       </MenuList>
     </Menu>

@@ -1,13 +1,12 @@
 import { Heading } from "@chakra-ui/react"
 import useProducers from "../hooks/useProducers";
+import useAnimeQueryStore from "../store";
 
-interface Props {
-  producerId: number | null;
-}
+const AnimeHeading = () => {
 
-const AnimeHeading = ({ producerId }: Props) => {
-
+  const producerId = useAnimeQueryStore(s => s.animeQuery.producerId);
   const producers = useProducers();
+
   const producer = producers.data?.data.find(p => p.mal_id === producerId)
   if (producerId)
     return (

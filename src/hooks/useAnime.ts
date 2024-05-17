@@ -1,7 +1,7 @@
 import { useInfiniteQuery} from "@tanstack/react-query";
-import { AnimeQuery } from "../App";
 import APIClient, { FetchResponse } from "../services/api-client";
 import ms from 'ms'
+import useAnimeQueryStore from "../store";
 export interface Studio {
   mal_id: number;
   name: string;
@@ -24,7 +24,10 @@ export interface Anime {
 
 const apiClient = new APIClient<Anime>("/anime");
 
-const useAnime = (animeQuery: AnimeQuery) => {
+const useAnime = () => {
+
+  const animeQuery = useAnimeQueryStore(s => s.animeQuery);
+
   return useInfiniteQuery<FetchResponse<Anime>>({
     queryKey: ["anime", animeQuery],
     queryFn: ({ pageParam = 1 }) =>
