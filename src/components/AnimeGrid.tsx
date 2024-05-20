@@ -1,7 +1,7 @@
 import { SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import React from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import useAnime from "../hooks/useAnime";
+import useAnime from "../hooks/useAnimes";
 import AnimeCard from "./AnimeCard";
 import AnimeCardContainer from "./AnimeCardContainer";
 import AnimeCardSkeleton from "./AnimeCardSkeleton";

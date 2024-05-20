@@ -1,4 +1,4 @@
-import { Studio } from "../hooks/useAnime";
+import { Studio } from "../hooks/useAnimes";
 import { HStack, Text } from "@chakra-ui/react";
 
 interface Props {

@@ -20,6 +20,7 @@ export interface Anime {
   };
   studios: Studio[];
   score: number;
+  synopsis: string;
 }
 
 const apiClient = new APIClient<Anime>("/anime");
@@ -29,7 +30,7 @@ const useAnime = () => {
   const animeQuery = useAnimeQueryStore(s => s.animeQuery);
 
   return useInfiniteQuery<FetchResponse<Anime>>({
-    queryKey: ["anime", animeQuery],
+    queryKey: ["animes", animeQuery],
     queryFn: ({ pageParam = 1 }) =>
       apiClient.getAll({
         params: {
