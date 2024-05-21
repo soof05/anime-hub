@@ -5,6 +5,7 @@ import useOneAnime from "../hooks/useOneAnime";
 import AnimeAttributes from "../components/AnimeAttributes";
 import useAnimePromo from "../hooks/useAnimePromo";
 import AnimePromo from "../components/AnimePromo";
+import { AnimePictures } from "../components/AnimePictures";
 
 const AnimeDetailPage = () => {
   const { id } = useParams();
@@ -29,6 +30,7 @@ const AnimeDetailPage = () => {
         <AnimeAttributes title={"Studios"} attribute={anime.data.studios} />
       </SimpleGrid>
       <AnimePromo animeId={anime.data.mal_id}/>
+      <AnimePictures animeId={anime.data.mal_id}/>
     </>
   );
 };

@@ -6,7 +6,7 @@ interface Props {
 
 const AnimePromo = ({ animeId }: Props) => {
   const { data: promo, isLoading, error } = useAnimePromo(animeId);
-  if (!promo) return;
+  if (!promo || !promo[0]) return;
 
   if (isLoading) return;
 
