@@ -7,7 +7,7 @@ import {
   Image,
   Text,
 } from "@chakra-ui/react";
-import { Anime } from "../hooks/useAnimes";
+import { Anime } from "../entities/Anime";
 import StudioList from "./StudioList";
 import ScoreBadge from "./ScoreBadge";
 import { Link } from "react-router-dom";

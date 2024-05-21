@@ -2,25 +2,10 @@ import { useInfiniteQuery} from "@tanstack/react-query";
 import APIClient, { FetchResponse } from "../services/api-client";
 import ms from 'ms'
 import useAnimeQueryStore from "../store";
+import { Anime } from "../entities/Anime";
 export interface Studio {
   mal_id: number;
   name: string;
-}
-
-export interface Anime {
-  mal_id: number;
-  title: string;
-  images: {
-    webp: {
-      image_url: string;
-    };
-    jpg: {
-      image_url: string;
-    };
-  };
-  studios: Studio[];
-  score: number;
-  synopsis: string;
 }
 
 const apiClient = new APIClient<Anime>("/anime");

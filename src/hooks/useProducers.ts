@@ -1,17 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import APIClient from "../services/api-client";
 import ms from 'ms'
+import { Producer } from "../entities/Producer";
 
-
-export interface Producer {
-  mal_id: number;
-  titles: [
-    {
-      type: string;
-      title: string;
-    }
-  ];
-}
 
 const apiClient = new APIClient<Producer>('/producers');
 
