@@ -1,4 +1,5 @@
 import axios, { AxiosRequestConfig } from "axios";
+import { Promo } from "../entities/AnimePromo";
 
 export interface FetchResponse<T> {
   data: T[];
@@ -25,10 +26,15 @@ class APIClient<T> {
   }
 
   get = (id: number) => {
-    console.log(this.endpoint + '/' + id.toString())
     return axiosInstance
       .get(this.endpoint + '/' + id.toString())
       .then((res) => res.data)
+  }
+
+  getVideos = (id: number) => {
+    return axiosInstance
+      .get<{data: { promo: Promo[]}}>(this.endpoint + '/' + id.toString() + '/videos')
+      .then((res) => res.data.data.promo)
   }
 }
 
