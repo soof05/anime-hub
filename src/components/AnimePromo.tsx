@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import useAnimePromo from "../hooks/useAnimePromo";
 import '../css/responsiveVideo.css'
 interface Props {
