@@ -8,9 +8,8 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { Anime } from "../entities/Anime";
-import StudioList from "./StudioList";
 import ScoreBadge from "./ScoreBadge";
-import { Link } from "react-router-dom";
+import StudioList from "./StudioList";
 
 interface Props {
   anime: Anime;
