@@ -1,0 +1,7 @@
+.fixed-box {
+    position: sticky; /* Stays fixed until scrolled past */
+    top: 0; /* Starts at the top */
+    width: 100%; /* Full width */
+    height: fit-content; /* Adjust height as needed */
+    padding: 1rem; /* Optional padding */
+}

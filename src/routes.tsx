@@ -1,8 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
-import Layout from './pages/Layout'
-import HomePage from './pages/HomePage'
-import ErrorPage from './pages/ErrorPage'
-import AnimeDetailPage from './pages/AnimeDetailPage'
+import AnimeDetailPage from './pages/AnimeDetailPage';
+import ErrorPage from './pages/ErrorPage';
+import HomePage from './pages/HomePage';
+import Layout from './pages/Layout';
+
 
 const router = createBrowserRouter([
     {
@@ -15,5 +16,4 @@ const router = createBrowserRouter([
         ]
     }
 ])
-
 export default router;
