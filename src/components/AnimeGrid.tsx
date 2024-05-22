@@ -5,16 +5,10 @@ import useAnime from "../hooks/useAnimes";
 import AnimeCard from "./AnimeCard";
 import AnimeCardContainer from "./AnimeCardContainer";
 import AnimeCardSkeleton from "./AnimeCardSkeleton";
+import { Link } from "react-router-dom";
 
 const AnimeGrid = () => {
-
-  const {
-    data,
-    error,
-    isLoading,
-    hasNextPage,
-    fetchNextPage,
-  } = useAnime();
+  const { data, error, isLoading, hasNextPage, fetchNextPage } = useAnime();
   const skeletons = [1, 2, 3, 4, 5, 6, 7, 8];
 
   if (error) return <Text>{error.message}</Text>;
@@ -43,9 +37,11 @@ const AnimeGrid = () => {
         {data?.pages.map((page, index) => (
           <React.Fragment key={index}>
             {page.data.map((anime) => (
-              <AnimeCardContainer key={anime.mal_id}>
-                <AnimeCard anime={anime} />
-              </AnimeCardContainer>
+              <Link to={`/games/${anime.mal_id}`}>
+                <AnimeCardContainer key={anime.mal_id}>
+                  <AnimeCard anime={anime} />
+                </AnimeCardContainer>
+              </Link>
             ))}
           </React.Fragment>
         ))}

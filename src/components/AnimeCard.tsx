@@ -22,7 +22,7 @@ const AnimeCard = ({ anime }: Props) => {
       <Image src={anime.images.jpg.image_url} />
       <CardBody>
         <Heading fontSize="2xl">
-          <Link to={'/games/' + anime.mal_id}>{anime.title}</Link>
+          {anime.title}
           </Heading>
         <HStack justifyContent="space-between">
           <Text fontSize="2xl" color="#A0AEC0">Score :</Text>
