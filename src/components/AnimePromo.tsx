@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import useAnimePromo from "../hooks/useAnimePromo";
 
 interface Props {
@@ -13,12 +14,15 @@ const AnimePromo = ({ animeId }: Props) => {
   if (error) throw error;
 
   return (
-    <iframe
-      src={promo[0].trailer.embed_url}
-      width={"853"}
-      height={"480"}
-      allowFullScreen
-    />
+    <Box>
+      <iframe
+        src={promo[0].trailer.embed_url}
+        width={"650"}
+        height={"350"}
+        allowFullScreen
+        className="responsive-iframe"
+      />
+    </Box>
   );
 };
 

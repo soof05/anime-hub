@@ -1,4 +1,4 @@
-import { Heading, SimpleGrid, Spinner } from "@chakra-ui/react";
+import { Heading, SimpleGrid, Spinner, Box } from "@chakra-ui/react";
 import { useParams } from "react-router-dom";
 import ExpandabelText from "../components/ExpandabelText";
 import useOneAnime from "../hooks/useOneAnime";
@@ -20,18 +20,25 @@ const AnimeDetailPage = () => {
   if (error || !anime) return;
 
   return (
-    <>
-      <Heading>{anime.data.title}</Heading>
-      <ExpandabelText text={anime.data.synopsis} />
-      <SimpleGrid columns={2} as={"dl"}>
-        <AnimeAttributes title={"Meta Score"} score={anime.data.score} />
-        <AnimeAttributes title={"Producers"} attribute={anime.data.producers} />
-        <AnimeAttributes title={"Genres"} attribute={anime.data.genres} />
-        <AnimeAttributes title={"Studios"} attribute={anime.data.studios} />
+      <SimpleGrid columns={{base: 1, md: 2}} spacing={5}>
+        <Box>
+          <Heading>{anime.data.title}</Heading>
+          <ExpandabelText text={anime.data.synopsis} />
+          <SimpleGrid columns={2} as={"dl"}>
+            <AnimeAttributes title={"Meta Score"} score={anime.data.score} />
+            <AnimeAttributes
+              title={"Producers"}
+              attribute={anime.data.producers}
+            />
+            <AnimeAttributes title={"Genres"} attribute={anime.data.genres} />
+            <AnimeAttributes title={"Studios"} attribute={anime.data.studios} />
+          </SimpleGrid>
+        </Box>
+        <Box>
+          <AnimePromo animeId={anime.data.mal_id} />
+          <AnimePictures animeId={anime.data.mal_id} />
+        </Box>
       </SimpleGrid>
-      <AnimePromo animeId={anime.data.mal_id}/>
-      <AnimePictures animeId={anime.data.mal_id}/>
-    </>
   );
 };
 
